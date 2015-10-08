@@ -20,7 +20,7 @@ public class Scan_network {
 					//String ssh_test = Main_slave.ExecutesshCommand(new String[]{"bash","-c","ssh -i /cal/homes/kchourou/.ssh/id_rsa.save " +hostname + " echo OK"});
 					String ssh_test = Ssh_connection.ExecutesshCommand(new String[]{"bash","-c","ssh -i /cal/homes/kchourou/.ssh/id_rsa.save " +hostname + " echo OK"});
 					System.out.println(ssh_test);
-					if (ssh_test.length()!=0)
+					if (ssh_test=="OK")
 					{
 						address = InetAddress.getByName(hostname);
 						WriteFile.ecrire("ip_adresses", address.getHostAddress());
