@@ -40,6 +40,7 @@ public class Main_slave {
 		    String hostname = ip_adresses.get(i);
 		    // Launch the process on the remote machine
 		    Process p = Runtime.getRuntime().exec(new String[]{"bash","-c","ssh -i /cal/homes/kchourou/.ssh/id_rsa.save " +hostname + " java -jar /cal/homes/kchourou/workspace/Slave_Shavadoop/bin/slave_shavadoop.jar  "});
+		    Process p1 = new ProcessBuilder("bash -c ssh -i /cal/homes/kchourou/.ssh/id_rsa.save " +hostname + " java -jar /cal/homes/kchourou/workspace/Slave_Shavadoop/bin/slave_shavadoop.jar  ").start();  // to be tested tomorrow
 		    Processes.add(p);
 		    //Process p2 = Runtime.getRuntime().exec(new String[]{"bash","-c","ssh -i /cal/homes/kchourou/.ssh/id_rsa.save " +"c130-04" + " java -jar /cal/homes/kchourou/workspace/Slave_Shavadoop/bin/slave_shavadoop.jar  "});
 		   
