@@ -10,46 +10,56 @@ import java.util.Iterator;
 
 public class Map {
 	
-	public  ArrayList<HashMap<String,Integer>> readFile(String filename) throws IOException{
+	//public  HashMap<String,Integer> readFile(String input_file,String output_file) throws IOException{
+		
+	public  void readFile(String input_file,String output_file) throws IOException{
 		 
-		ArrayList<HashMap<String,Integer>> keys = new ArrayList<HashMap<String,Integer>>();
-		 BufferedReader br = new BufferedReader(new FileReader(filename));
+		//HashMap<String,Integer> keys = new HashMap<String,Integer>();
+		 BufferedReader br = new BufferedReader(new FileReader(input_file));
 		 try {
 			 
-			 StringBuilder sb = new StringBuilder();
+			 //StringBuilder sb = new StringBuilder();
 			 String line = br.readLine();
-			 ArrayList<String> Splitted_lines = new ArrayList<String>();
-			 
+			 //ArrayList<String> Splitted_lines = new ArrayList<String>();
+			 HashMap<String,Integer> key = new HashMap<String,Integer>();
 			 while(line != null){
-				 HashMap<String,Integer> key = new HashMap<String,Integer>();
+				 
 				 //String[] words = line.split(" ");
 				 Iterator<String> it = Arrays.asList(line.split(" ")).iterator();
 				 while(it.hasNext()){
 		    			String word = it.next();
-		    		
 		    			key.put(word, 1);
+		    			WriteFile.ecrire(output_file, word+ " 1" );
 		    			
-		    			WriteFile.ecrire("file", word+ " 1 \n" );
-		    			keys.add(key);
+		    			//key.add(key);
 		    		}
-				 Splitted_lines.add(line);
+				 //Splitted_lines.add(line);
 				 line = br.readLine();
 			 }
+			 //System.out.println("slave executed");
 			 
 			 // write the keys on a file
 			 
-			 return keys;
+			 for (String iter : key.keySet()) {
+				  
+				   System.out.println(iter);
+				}
+ 
+			 //return key;
 		 } finally {
 			 br.close();
 			 
 		 }
 	 }
 	
-	public static void main(String[] a) throws IOException{
+	public static void main(String[] args) throws IOException{
 		
 		Map map = new Map();
+		 //example to test: 
+		//args[0]="/cal/homes/kchourou/workspace/Shavadoop/data/S_0";
+		//args[1]="UM_0";
 		
-		System.out.println(map.readFile("/home/khalil/workspace/shavadoop/src/shavadoop/text"));
+		map.readFile(args[0],args[1]);
 	}
 
 }

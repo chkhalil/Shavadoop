@@ -8,22 +8,28 @@ import java.util.ArrayList;
 public class Split_doc {
 	
 	
- public static ArrayList<String> readFile(String filename) throws IOException{
+ public static Integer readFile(String filename) throws IOException{
 		 
 		 BufferedReader br = new BufferedReader(new FileReader(filename));
 		 try {
 			 
 			 StringBuilder sb = new StringBuilder();
 			 String line = br.readLine();
-			 ArrayList<String> Splitted_lines = new ArrayList<String>();
+			 //ArrayList<String> Splitted_lines = new ArrayList<String>();
 			 
+			 int file_index = 0;
 			 while(line != null){
 				 
-				 Splitted_lines.add(line);
-				 line = br.readLine();
+				 //Splitted_lines.add(line);
+				 WriteFile.ecrire("data/S_"+ String.valueOf(file_index), line);
 				 
+				 file_index++;
+				 line = br.readLine();
+			 
 			 }
-			 return Splitted_lines;
+			 return (file_index);
+			 
+			 //return Splitted_lines;
 		 } finally {
 			 br.close();
 			 

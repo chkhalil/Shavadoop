@@ -13,7 +13,7 @@ public class WaitForSlave {
 		 try {
 			  
 			p.waitFor();
-			System.out.println("wait finished");
+			//System.out.println("wait finished");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
                 String line = "";			
