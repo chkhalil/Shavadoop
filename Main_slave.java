@@ -23,7 +23,7 @@ public class Main_slave {
 		// to do: send the splitted parts to remote computers
 		
 		// get the ip's that our machine can connect to
-	    //Scan_network.get_ip_Adress();
+	    Scan_network.get_ip_Adress();
 		
 		// Run the map processes over the slaves
 		
@@ -51,32 +51,8 @@ public class Main_slave {
 		   // Wait for slaves until they finish
 		    
 		    HashMap<String,ArrayList<String>> key_umx = new HashMap<String,ArrayList<String>>();
-		    for (int i=0;i<Processes.size();i++){
+		    key_umx = WaitForSlave.wait_slaves(Processes);  // to be tested tomorrow
 		    
-		    	String[] words_process = WaitForSlave.wait(Processes.get(i).p).split("\n");
-		    	
-		    	System.out.println("result returned by hostname  "+Processes.get(i).host );
-		    	
-		    	for (String word: words_process){
-		    		
-		    		 if (word.length()!=0)
-		    		 {
-		    	     if (key_umx.containsKey(word)){
-		    				//ArrayList<String> tmp_value = key_umx.get(word);
-		    				//tmp_value.add(Processes.get(i).host);
-		    				key_umx.get(word).add(Processes.get(i).host);
-			    			//key_umx.put(word, tmp_value);	
-		    			}
-		    	     else{
-		    	    	 System.out.println("here is the begin of the word");
-		    	    	 System.out.println(word.length());
-		    	    	 System.out.println("here is the end of the word");
-		    	    	 ArrayList<String> value  = new ArrayList<String>(Arrays.asList(Processes.get(i).host));  
-		    	    	 key_umx.put(word,value);
-		    	     }
-		    		 }
-		    	}
-		    }
 		    
 		    for (String key : key_umx.keySet()) {
 		    	   System.out.println("------------------------------------------------");
